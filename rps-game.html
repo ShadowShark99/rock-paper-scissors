@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    console.log("Hello World");
+    function getComputerChoice() {
+      const choices = ['rock', 'paper', 'scissors'];
+      const randomNumber = Math.floor(Math.random() * 3);
+      return choices[randomNumber];
+    }
+    function getHumanChoice() {
+      const humanChoice = prompt("Please choose rock, paper, or scissors");
+      return humanChoice;
+    }
+
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice){
+      const humanChoiceLower = humanChoice.toLowerCase();
+      console.log("Human: " + humanChoiceLower + " Computer: " + computerChoice);
+      if(humanChoiceLower === computerChoice){
+        console.log("It's a tie!");
+      } else if(humanChoiceLower === 'rock' && computerChoice === 'scissors' ||
+                humanChoiceLower === 'paper' && computerChoice === 'rock' ||
+                humanChoiceLower === 'scissors' && computerChoice === 'paper'){
+        console.log("You win!");
+        humanScore++;
+      } else {
+        console.log("You lose!");
+        computerScore++;
+      }
+
+    }
+
+    function playGame(){
+      for(let i = 0; i < 5; i++){
+        humanChoice = getHumanChoice();
+        computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        console.log("Human: " + humanScore + " Computer: " + computerScore);
+      }
+    }
+
+    playGame();
+  </script>
+</body>
+</html>
