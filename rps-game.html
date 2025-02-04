@@ -6,8 +6,10 @@
   <title>Document</title>
 </head>
 <body>
-
-
+  <button id="rock">Rock</button>
+  <button id="paper">Paper</button>
+  <button id="scissors">Scissors</button>
+  <div class="score"></div>
   <script>
     console.log("Hello World");
     function getComputerChoice() {
@@ -39,16 +41,37 @@
 
     }
 
-    function playGame(){
-      for(let i = 0; i < 5; i++){
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        console.log("Human: " + humanScore + " Computer: " + computerScore);
-      }
-    }
+    // function playGame(){
+    //   for(let i = 0; i < 5; i++){
+    //     humanChoice = getHumanChoice();
+    //     computerChoice = getComputerChoice();
+    //     playRound(humanChoice, computerChoice);
+    //     console.log("Human: " + humanScore + " Computer: " + computerScore);
+    //   }
+    // }
 
-    playGame();
+    //playGame();
+    const score = document.querySelector("div");
+
+    const rockButton = document.querySelector("button");
+    rockButton.addEventListener("click", () => {
+      playRound("rock", getComputerChoice());
+      score.textContent = "Human: " + humanScore + " Computer: " + computerScore;
+    });
+    const paperButton = document.querySelector("#paper");
+    paperButton.addEventListener("click", () => {
+      playRound("paper", getComputerChoice());
+      score.textContent = "Human: " + humanScore + " Computer: " + computerScore;
+    });
+    const scissorsButton = document.querySelector("#scissors");
+    scissorsButton.addEventListener("click", () => {
+      playRound("scissors", getComputerChoice());
+      score.textContent = "Human: " + humanScore + " Computer: " + computerScore;
+    });
+
+    
+    score.textContent = "Human: " + humanScore + " Computer: " + computerScore;
+
   </script>
 </body>
 </html>
